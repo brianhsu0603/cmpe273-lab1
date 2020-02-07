@@ -8,13 +8,13 @@ import glob
 
 file_list = glob.glob('unsorted*.txt') 
 
-with open('unsorted', 'w') as file:
+with open('unsorted', 'wb') as file:
     for file_name in file_list:
         f = open( file_name , 'r' )
-        content = f.read()
+        content = f.read().strip()
         f.close()
-        file.write((content))
-        file.write("\n")
+        file.write(bytes(content))
+        file.write(b"\n")
 
 class heapnode:
     
