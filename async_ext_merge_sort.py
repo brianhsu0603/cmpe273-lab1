@@ -1,6 +1,6 @@
 # reference:https://github.com/melvilgit/external-Merge-Sort
 
- import os
+import os
 import tempfile
 import heapq
 import sys
