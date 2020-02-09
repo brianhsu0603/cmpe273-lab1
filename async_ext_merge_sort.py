@@ -9,13 +9,13 @@ import asyncio
 
 file_list = glob.glob('unsorted*.txt') 
 
-with open('unsorted', 'wb') as file:
+with open('unsorted', 'w') as file:
     for file_name in file_list:
         f = open( file_name , 'r' )
         content = f.read().strip()
         f.close()
-        file.write(bytes(content))
-        file.write(b"\n")
+        file.write(content)
+        file.write("\n")
 
 class heapnode:
     
@@ -81,7 +81,7 @@ class externalMergeSort:
 
     def construct_heap(self, arr):
         l = len(arr) - 1
-        mid = l / 2
+        mid = int(l / 2)
         while mid >= 0:
             self.heapify(arr, mid, l)
             mid -= 1
