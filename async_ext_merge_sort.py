@@ -1,5 +1,6 @@
 # reference:https://github.com/melvilgit/external-Merge-Sort
-import os
+
+ import os
 import tempfile
 import heapq
 import sys
@@ -14,13 +15,13 @@ with open('unsorted', 'w') as file:
         f = open( file_name , 'r' )
         content = f.read().strip()
         f.close()
-        file.write(content)
+        file.write((content))
         file.write("\n")
 
 class heapnode:
     
 
-   def __init__(
+    def __init__(
             self,
             item,
             fileHandler,
@@ -50,7 +51,6 @@ class externalMergeSort:
     def mergeSortedtempFiles(self):
         mergedNo = (map(int, tempFileHandler) for tempFileHandler in
                     self.sortedTempFileHandlerList)  
-        
         sortedCompleteData = heapq.merge(
             *mergedNo)  
         return sortedCompleteData
@@ -93,7 +93,7 @@ class externalMergeSort:
         for tempFileHandler in self.sortedTempFileHandlerList:
             item = int(tempFileHandler.readline().strip())
             list.append(heapnode(item, tempFileHandler))
-           
+
         self.construct_heap(list)
         while True:
             min = list[0]
@@ -111,9 +111,10 @@ class externalMergeSort:
          
         return sorted_output
 
-   
+  
+
     def splitFiles(self, largeFileName, smallFileSize):
-        largeFileHandler = open(largeFileName)
+        largeFileHandler = open(largeFileName,'rb')
         tempBuffer = []
         size = 0
         while True:
@@ -126,7 +127,6 @@ class externalMergeSort:
                 tempBuffer = sorted(tempBuffer, key=lambda no: \
                     int(no.strip()))
                 tempFile = tempfile.NamedTemporaryFile(dir=self.cwd + '/temp' , delete=False)
-               
                 tempFile.writelines(tempBuffer)
                 tempFile.seek(0)
                 self.sortedTempFileHandlerList.append(tempFile)
